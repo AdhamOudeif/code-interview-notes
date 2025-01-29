@@ -110,4 +110,6 @@ O(x!) (factorial time) grows extremely quickly and is much worse than all of the
 Suppose you have an algorithm that has two steps. When do you multiply the runtimes and when do you 
 add them? 
 
+find out tomorrow 
+
 
