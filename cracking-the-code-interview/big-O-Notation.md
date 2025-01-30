@@ -110,6 +110,36 @@ O(x!) (factorial time) grows extremely quickly and is much worse than all of the
 Suppose you have an algorithm that has two steps. When do you multiply the runtimes and when do you 
 add them? 
 
-find out tomorrow 
+![image](https://github.com/user-attachments/assets/3800ca3d-6c9a-44d3-bf8a-2cfea93a643c)
+
+On the left, we do A chunks of work, _then_ B chunks of work. O(A+B)
+On the Right, we do B chunks of work _for each_ element in A. O(A*B)
+
+## Amortized Time
+ArrayList is an Array that you can dynamically grow with built in methods. Arrays are faster and use less memory due to direct allocation though. 
+How does one calculate the runtime of creating an ArrayList from an Array (it will allocate the original arrays elements to the new arrayList). 
+If the array contains N elements, then inserting a new element will take O(N) time. Creating a new array of size 2N and copying N elements over.
+
+##### What is Amortized Time?
+Amortized time complexity analyzes the average time per operation over a sequence of operations, rather than just the worst-case time of a single operation. This helps provide a more accurate estimate of performance for certain algorithms and data structures.
+
+##### Why Use Amortized Analysis?
+Some operations might be costly individually but are rare compared to cheaper operations. Amortized analysis helps show that, on average, the time per operation is still efficient.
+
+##### Example: Dynamic Array (ArrayList in Java)
+In an **ArrayList**, adding an element (`add()`) is generally **O(1)**. However, when the internal array reaches capacity, a new, larger array must be allocated, and all elements are copied over, making that insertion **O(n)**. But since this resizing happens infrequently, the **amortized** time complexity remains **O(1)**.
+
+##### Breakdown:
+1. Most `add()` operations: **O(1)**
+2. Occasional resizing operation: **O(n)**
+3. Over a large number of insertions, the **average cost per operation remains O(1)**.
+
+##### Amortized Complexity in Other Data Structures:
+- **Stack with Dynamic Array**: `push()` remains **O(1)** amortized despite occasional resizing.
+- **HashMap Resizing**: Insertions are typically **O(1)** but can be **O(n)** when resizing occurs.
+- **Splay Trees**: Individual operations may be **O(n)**, but over time, the average cost is **O(log n)**.
+
+##### Summary:
+Amortized analysis provides a realistic view of an algorithm’s efficiency over time, ensuring that occasional expensive operations don’t skew overall performance estimates.
 
 
