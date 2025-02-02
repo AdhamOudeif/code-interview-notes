@@ -142,4 +142,38 @@ In an **ArrayList**, adding an element (`add()`) is generally **O(1)**. However,
 ##### Summary:
 Amortized analysis provides a realistic view of an algorithm’s efficiency over time, ensuring that occasional expensive operations don’t skew overall performance estimates.
 
+## Log N Runtimes
+The "log" of a number, or logarithm, represents the exponent to which a fixed base number must be raised to produce that number; essentially, it answers the question "how many times must a base number be multiplied by itself to get the given number?"
+
+so how does that relate to Big O? We often see O(log N) in runtimes. Think of a binary search for example, where you compare an element to the middle of a sorted array of N length. If it's equal to the mid point, return, else search on the side that it is greater or less than, and keep doing that until you find the value.
+
+Search for 56 in an N-Element _sorted_ array (fibbonaci sequence): {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 56, 90}
+1. compare 56 with 5 -> it's bigger so we search the right side of the array: {8, 13, 21, 34, 56, 90}
+2. compare 56 with 21 -> bigger so again we search the right side of the array: {34, 56, 90}
+3. compare 56 with 56 -> equal, so return.
+
+We started with N elements, then down to N/2, then N/4 and so on. The *total runtime* is then a matter of how many steps we can take until N becomes 1. In the above example:
+N = 12, N= 6, N = 3. So How many steps can we take until N becomes 1 (or on the reverse side, how many times can we multiple 1 by 2 till we get N?)
+
+![image](https://github.com/user-attachments/assets/b3128f92-6c6c-4751-8c71-f268c0fb1311)
+
+### Recursive Runtimes
+```
+int f(int n){
+  if (n <= 1) {
+    return 1;
+  }
+  return f(n - 1) + f(n -1);
+}
+```
+What is the runtime of this code? 
+
+![image](https://github.com/user-attachments/assets/3275eeae-e7fc-442d-a456-2823c63721fa)
+
+2^N+1 - 1 = 15 calls where N = 4 
+
+Remember this pattern, when you have a recursive function that makes multiple calls, the runtime will look like O(branches^depth) where branches = # of times each recursive call branches out. In this case its O(2^N). The space complexity of this will be O(N) , due to the call stack. 
+
+
+
 
