@@ -174,6 +174,93 @@ What is the runtime of this code?
 
 Remember this pattern, when you have a recursive function that makes multiple calls, the runtime will look like O(branches^depth) where branches = # of times each recursive call branches out. In this case its O(2^N). The space complexity of this will be O(N) , due to the call stack. 
 
+_______________________________________________________________________
 
+# More Analogys:
+
+---
+
+### **1️⃣ O(N²) – Quadratic Time**  
+🔹 **Analogy**: Imagine you’re organizing a dinner party, and for every guest, you want to personally greet each other guest. If you have 10 guests, each one interacts with all 9 others, meaning you do about **N²** greetings.  
+
+🔹 **Graph**: As the number of guests (N) increases, the time required **grows exponentially** because each new guest interacts with every previous one.  
+
+🔹 **Example in Code**:  
+```python
+for i in range(N):  
+    for j in range(N):  # Every i interacts with every j
+        print(i, j)
+```
+🔹 **Real-life analogy**: A **brute force** password cracker that tries every possible pair of characters.
+
+---
+
+### **2️⃣ O(2ᴺ) – Exponential Time**  
+🔹 **Analogy**: Suppose you have a magic box that **duplicates** itself every second. If you start with one box, after 1 second you have 2, after 2 seconds you have 4, then 8, then 16... It **grows exponentially** with every second.  
+
+🔹 **Graph**: The curve **skyrockets** fast! Small increases in N lead to massive jumps in time.  
+
+🔹 **Example in Code** (Recursive Fibonacci):  
+```python
+def fibonacci(n):  
+    if n <= 1:  
+        return n  
+    return fibonacci(n - 1) + fibonacci(n - 2)
+```
+🔹 **Real-life analogy**: If every new virus-infected person infects two more, the **spread of a virus** follows an **O(2ᴺ) growth**.
+
+---
+
+### **3️⃣ O(log N) – Logarithmic Time**  
+🔹 **Analogy**: Imagine looking for a name in a **phone book**. Instead of flipping page by page (O(N)), you **cut the book in half** each time, discarding the half that doesn't contain the name. This is **binary search**.  
+
+🔹 **Graph**: **Slows down as N grows**, meaning increasing N doesn't impact time as much.  
+
+🔹 **Example in Code** (Binary Search):  
+```python
+def binary_search(arr, target):  
+    left, right = 0, len(arr) - 1  
+    while left <= right:  
+        mid = (left + right) // 2  
+        if arr[mid] == target:  
+            return mid  
+        elif arr[mid] < target:  
+            left = mid + 1  
+        else:  
+            right = mid - 1  
+    return -1  
+```
+🔹 **Real-life analogy**: Searching for a word in a **dictionary**—you jump sections instead of flipping page by page.
+
+---
+
+### **4️⃣ O(N log N) – Linearithmic Time**  
+🔹 **Analogy**: Imagine sorting a deck of cards. If you **divide** the deck into halves, sort each half, and merge them back together, that’s an **O(N log N) approach** like **Merge Sort**.  
+
+🔹 **Graph**: Faster than O(N²) but slower than O(N). The log N factor comes from breaking problems down **recursively**.  
+
+🔹 **Example in Code** (Merge Sort):  
+```python
+def merge_sort(arr):  
+    if len(arr) <= 1:  
+        return arr  
+    mid = len(arr) // 2  
+    left = merge_sort(arr[:mid])  
+    right = merge_sort(arr[mid:])  
+    return merge(left, right)  
+```
+🔹 **Real-life analogy**: **Organizing bookshelves**—you first group books by category, sort within those groups, then merge everything together.
+
+---
+
+### **Final Thought**  
+🔹 **O(1)** = Driving a package directly. 🚗  
+🔹 **O(N)** = Sending a file via email (takes longer based on size). 📧  
+🔹 **O(N²)** = Everyone in a group greeting everyone else. 👋  
+🔹 **O(2ᴺ)** = Virus spreading rapidly. 🦠  
+🔹 **O(log N)** = Searching a dictionary by cutting pages in half. 📖  
+🔹 **O(N log N)** = Sorting books by first grouping, then sorting. 📚  
+
+Let me know if you need any clarifications! 🚀
 
 
